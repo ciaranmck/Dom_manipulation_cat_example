@@ -1,8 +1,30 @@
-var addCat = function(name, food, link) {
-  var li1 = createName(name);
-  var li2 = createFavouriteFood(food);
-  var li3 = addImage(picture);
-  var picture = createPicture(link);
+var catArray = [{
+  name: "Garfield",
+  favFood: "Lasagne",
+  link: "https://static.comicvine.com/uploads/original/11/111746/4684849-latest.jpg"
+},
+  {
+    name: "Boba",
+    favFood: "Sock Fluff",
+    link: "http://66.media.tumblr.com/d1f01bbe0150fda0c40d2151c5eaeac8/tumblr_odlqqskjj61v9cejwo1_400.jpg",
+  },
+  {
+    name: "Barnaby",
+    favFood: "Tuna",
+    link: "https://68.media.tumblr.com/88d0fcf2b84a7b098dda839130597569/tumblr_okuo4teiql1uhevdso1_1280.jpg"
+  },
+  {
+    name: "Max",
+    favFood: "Whiskas Temptations",
+    link: "http://66.media.tumblr.com/7c5784ea89369c780e782bf10c60315a/tumblr_npb0hlYwhV1u63jaco1_1280.jpg"
+  }
+];
+
+var addCat = function(cat) {
+  var li1 = createName(cat.name);
+  var li2 = createFavouriteFood(cat.favFood);
+  var li3 = addImage();
+  var picture = createPicture(cat.link);
   
   appendElements(li1, li2, li3, picture);
 }
@@ -19,7 +41,7 @@ var createFavouriteFood = function(food) {
   return li2;
 }
 
-var addImage = function(picture) {
+var addImage = function() {
   var li3 = document.createElement("li");
   return li3;
 }
@@ -74,10 +96,13 @@ var appendElements = function(li1, li2, li3, picture) {
 // }
 
 var app = function() {
-  addCat("Garfield", "Lasagne", "https://static.comicvine.com/uploads/original/11/111746/4684849-latest.jpg");
-  addCat("Boba", "Sock Fluff", "http://66.media.tumblr.com/d1f01bbe0150fda0c40d2151c5eaeac8/tumblr_odlqqskjj61v9cejwo1_400.jpg")
-  addCat("Barnaby", "Tuna", "https://68.media.tumblr.com/88d0fcf2b84a7b098dda839130597569/tumblr_okuo4teiql1uhevdso1_1280.jpg")
-  addCat("Max", "Whiskas Temptations", "http://66.media.tumblr.com/7c5784ea89369c780e782bf10c60315a/tumblr_npb0hlYwhV1u63jaco1_1280.jpg")
+  for(var cat of catArray) {
+    addCat(cat);
+  }
+  // addCat("Garfield", "Lasagne", "https://static.comicvine.com/uploads/original/11/111746/4684849-latest.jpg");
+  // addCat("Boba", "Sock Fluff", "http://66.media.tumblr.com/d1f01bbe0150fda0c40d2151c5eaeac8/tumblr_odlqqskjj61v9cejwo1_400.jpg")
+  // addCat("Barnaby", "Tuna", "https://68.media.tumblr.com/88d0fcf2b84a7b098dda839130597569/tumblr_okuo4teiql1uhevdso1_1280.jpg")
+  // addCat("Max", "Whiskas Temptations", "http://66.media.tumblr.com/7c5784ea89369c780e782bf10c60315a/tumblr_npb0hlYwhV1u63jaco1_1280.jpg")
 }
 
 window.addEventListener('load', app);
